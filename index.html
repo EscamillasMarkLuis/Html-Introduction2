@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+        
+    .container {
+      position: relative;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      background-color: black; 
+    }
+       
+    .background-clip {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      display: none; 
+    }
+    
+    .content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      color: white;
+    }
+    
+    .content h1 {
+      font-size: 4rem;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .content a {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 15px 30px;
+      font-size: 1.5rem;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.5);
+      text-decoration: none;
+      border-radius: 10px;
+      border: 2px solid white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s, transform 0.3s;
+      cursor: pointer; 
+    }
+    
+    .content a:hover {
+      background-color: rgba(0, 0, 0, 0.7);
+      transform: scale(1.05);
+    }
+
+    .content a:active {
+      transform: scale(0.95);
+    }
+
+    .signup-container {
+      background: rgba(0, 0, 0, 0.8); 
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 400px;
+      position: absolute;
+      top: 20px; 
+      right: 20px; 
+      transform: translateX(0%);
+      margin: 0;
+      display: none; 
+    }
+
+    .signup-container h2 {
+      color: #ffffff; 
+    }
+
+    .center-container {
+      background: rgba(0, 0, 0, 0.8); 
+      padding: 20px;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 600px;
+      position: absolute;
+      display: none; 
+      top: 50%; 
+      left: 5%; 
+      transform: translateY(-50%); 
+      text-align: center;
+      color: white; 
+    }
+
+   
+    .center-container img {
+      width: 180px; 
+      height: auto;
+      display: block;
+    }
+
+    .center-container img:first-child {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+
+    .center-container img:last-child {
+      position: absolute;
+      bottom: 10px;
+      left: 150px;
+    }
+
+    .center-container h4 {
+      margin-top: 20px;
+      color: white; 
+    }
+
+    .center-container p {
+      color: white; 
+    }
+
+    .social-icons {
+      margin-top: 20px;
+    }
+
+    .social-icons a {
+      color: white;
+      margin: 0 10px;
+      font-size: 2rem;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #007bff; 
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+      position: relative;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #ffffff;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #444;
+      border-radius: 4px;
+      box-sizing: border-box;
+      color: #000000;
+    }
+
+    .form-group input[type="submit"] {
+      background-color: #007bff; 
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+      border-radius: 4px;
+    }
+
+    .form-group input[type="submit"]:hover {
+      background-color: #0056b3; 
+    }
+
+    .form-footer {
+      margin-top: 20px;
+      text-align: center;
+      color: white; 
+    }
+
+    .form-footer a {
+      color: #007bff; 
+      text-decoration: none;
+    }
+
+    .form-footer a:hover {
+      text-decoration: underline;
+    }
+
+    .forgot-password {
+      display: block;
+      margin-top: 10px;
+      color: #ffffff;
+    }
+
+    .password-eye {
+      position: absolute;
+      right: 10px;
+      top: 65%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: #000000;
+      font-size: 18px;
+      pointer-events: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <video id="backgroundVideo" autoplay loop muted playsinline class="background-clip">
+      <source src="C:/Users/Luis Escamillas/Documents/Untitled video - Made with Clipchamp.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+   
+    <div class="content">
+      <a href="#" id="startButton">Click to Start</a>
+    </div>
+
+    
+    <div class="signup-container">
+      <h2>Signup</h2>
+      <form action="/submit-signup" method="post">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required>
+          <i id="togglePassword" class="fas fa-eye password-eye"></i>
+        </div>
+        <div class="form-group">
+          <input type="submit" value="Sign Up">
+        </div>
+      </form>
+      <div class="form-footer">
+        <a href="/forgot-password" class="forgot-password">Forgot Password?</a>
+        <p>Don't have an account? <a href="/Sign up" class="create-account">Sign up</a></p>
+      </div>
+    </div>
+
+    
+    <div class="center-container" id="centerContainer">
+      <h4>Looking for Gaming Buddies?</h4>
+      <p>DM me if you're up for some fun gaming sessions! Let’s team up and enjoy the game—trolling enemies and teammates just for laughs. 
+        Got someone trash-talking you? I’m ready to trash-talk them right back! Let’s make the game entertaining and filled with fun. Ready to join the chaos? Hit me up!</p>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/profile.php?id=100067746460020" target="_blank" class="fab fa-facebook-f"></a>
+        <a href="https://www.instagram.com/chuliziz/" target="_blank" class="fab fa-instagram"></a>
+        <a href="https://steamcommunity.com/profiles/76561199759768932/" target="_blank" class="fab fa-steam"></a>
+      </div>
+    </div>
+  
+  </div>
+
+  <script>
+    
+    const video = document.getElementById('backgroundVideo');
+    const startButton = document.getElementById('startButton');
+    const signupContainer = document.querySelector('.signup-container');
+    const container = document.querySelector('.container');
+    const centerContainer = document.getElementById('centerContainer');
+    
+    startButton.addEventListener('click', function(event) {
+      event.preventDefault(); 
+      video.style.display = 'block'; 
+      video.play(); 
+      startButton.style.display = 'none';
+      signupContainer.style.display = 'block'; 
+      container.style.backgroundColor = 'transparent';
+      centerContainer.style.display = 'block'; 
+    });
+
+    const togglePassword = document.getElementById('togglePassword');
+    const passwordField = document.getElementById('password');
+
+    togglePassword.addEventListener('click', function () {
+      const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+      passwordField.setAttribute('type', type);
+      this.classList.toggle('fa-eye');
+      this.classList.toggle('fa-eye-slash');
+    });
+  </script>
+</body>
+</html>
